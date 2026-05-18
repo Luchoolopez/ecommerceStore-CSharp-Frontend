@@ -1,10 +1,12 @@
 export interface CarritoItemDto {
+  varianteId: number;
   productoId: number;
-  cantidad: number;
+  nombreProducto: string;
+  atributoVariante: string;
   precioUnitario: number;
-  precioTotal: number;
-  productoNombre?: string;
-  imagenPrincipal?: string;
+  cantidad: number;
+  subtotal: number;
+  imagen?: string;
 }
 
 export interface CarritoDto {

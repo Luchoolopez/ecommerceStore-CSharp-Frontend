@@ -1,9 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #aa3bff;
+  --color-surface: #131313;
+  --color-surface-dim: #0a0a0a;
+  --color-surface-bright: #3a3939;
+  --color-on-surface: #e5e2e1;
+  --color-primary: #ffffff;
+  --color-on-primary: #131313;
+  --color-outline: #8e9192;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+
+  --font-anton: 'Anton', sans-serif;
+  --font-hanken: 'Hanken Grotesk', sans-serif;
 }
 
 body {
-  @apply bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased;
+  @apply bg-surface text-on-surface font-hanken antialiased selection:bg-primary selection:text-on-primary;
 }

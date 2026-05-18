@@ -12,7 +12,7 @@ export const api = axios.create({
 // Interceptor para inyectar el token JWT
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -33,7 +33,8 @@ api.interceptors.response.use(
       const { status } = error.response;
       if (status === 401) {
         // Redirigir al login o limpiar sesión si es 401 Unauthorized
-        localStorage.removeItem('token');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
         localStorage.removeItem('user');
         window.location.href = '/login';
       } else if (status === 403) {

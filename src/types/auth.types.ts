@@ -12,12 +12,15 @@ export interface RegisterDto {
 }
 
 export interface AuthResponseDto {
-  token: string;
-  user: {
+  accessToken: string;
+  refreshToken: string;
+  usuario: {
     id: number;
     email: string;
     nombre: string;
-    apellido: string;
     rol: string;
+    telefono?: string;
+    activo: boolean;
+    fechaCreacion: string;
   };
 }
