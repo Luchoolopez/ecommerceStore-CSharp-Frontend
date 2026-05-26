@@ -1,9 +1,15 @@
+// Wrapper que el backend envuelve en TODAS las respuestas
+export interface ApiResponse<T> {
+  exito: boolean;
+  mensaje: string;
+  data: T;
+}
+
+// Coincide con DTOs/PagedResponse.cs del backend
 export interface PagedResponse<T> {
-  data: T[];
-  pageNumber: number;
-  pageSize: number;
-  totalElements: number;
+  items: T[];
+  totalItems: number;
+  page: number;
+  limit: number;
   totalPages: number;
-  hasPreviousPage: boolean;
-  hasNextPage: boolean;
 }

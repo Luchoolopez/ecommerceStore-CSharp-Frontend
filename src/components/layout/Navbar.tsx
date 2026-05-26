@@ -13,7 +13,7 @@ export const Navbar = () => {
       <div className="grid grid-cols-3 items-center px-4 md:px-6 h-[80px]">
         {/* Left: Navigation */}
         <div className="flex gap-4 md:gap-8">
-          <Link to="/shop" className="hover:text-primary transition-colors">
+          <Link to="/tienda" className="hover:text-primary transition-colors">
             <Typography variant="label-caps">Tienda</Typography>
           </Link>
           <Link to="/about" className="hover:text-primary transition-colors hidden md:block">
