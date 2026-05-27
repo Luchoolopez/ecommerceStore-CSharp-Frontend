@@ -24,7 +24,7 @@ export const Navbar = () => {
         <div className="flex justify-center">
           <Link to="/">
             <Typography variant="headline-md" className="tracking-widest uppercase">
-              ELIXIR
+              VICE
             </Typography>
           </Link>
         </div>

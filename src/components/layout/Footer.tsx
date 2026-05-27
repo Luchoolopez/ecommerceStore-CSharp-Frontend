@@ -2,16 +2,17 @@ import { Link } from 'react-router-dom';
 import { Typography } from '../ui';
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full bg-surface border-t-2 border-primary">
       <div className="px-6 md:px-16 py-16 grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-0">
         {/* Logo y copyright */}
         <div className="md:col-span-4 flex flex-col gap-4">
           <Typography variant="headline-md" className="text-primary uppercase tracking-tighter">
-            FLOYD
+            VICE
           </Typography>
           <Typography variant="label-caps" className="text-outline">
-            © 2024 FLOYD. TODOS LOS DERECHOS RESERVADOS.
+            © {currentYear} VICE. TODOS LOS DERECHOS RESERVADOS.
           </Typography>
         </div>
 

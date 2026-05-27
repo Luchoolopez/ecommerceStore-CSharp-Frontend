@@ -12,29 +12,48 @@ export const ManifestoSection = () => {
           as="h2"
           className="text-primary uppercase leading-tight text-[40px] md:text-[64px]"
         >
-          Materia y Vacío
+          Carácter y Elegancia
         </Typography>
 
         <Typography variant="body-lg" className="text-outline leading-relaxed">
-          Construimos fragancias como estructuras habitables. Cada nota es un bloque de hormigón, 
-          cada acorde una viga de acero. Despojados de ornamentos, dejamos que la esencia cruda 
-          interactúe con el espacio negativo.
+          Seleccionamos cada botella buscando algo más que una bebida: una experiencia. 
+          Desde etiquetas clásicas hasta ediciones modernas, nuestra colección está pensada 
+          para quienes disfrutan del diseño, la calidad y los momentos que merecen ser celebrados.
         </Typography>
 
         <div className="flex gap-12 mt-6 border-t border-outline pt-8 w-full justify-center">
           <div className="flex flex-col items-center gap-1">
-            <Typography variant="headline-md" as="span" className="text-primary">100%</Typography>
-            <Typography variant="label-caps" className="text-outline text-center">Sin Sintéticos</Typography>
+            <Typography variant="headline-md" as="span" className="text-primary">
+              100%
+            </Typography>
+
+            <Typography variant="label-caps" className="text-outline text-center">
+              Calidad Seleccionada
+            </Typography>
           </div>
+
           <div className="w-px bg-outline" />
+
           <div className="flex flex-col items-center gap-1">
-            <Typography variant="headline-md" as="span" className="text-primary">30+</Typography>
-            <Typography variant="label-caps" className="text-outline text-center">Notas Únicas</Typography>
+            <Typography variant="headline-md" as="span" className="text-primary">
+              50+
+            </Typography>
+
+            <Typography variant="label-caps" className="text-outline text-center">
+              Etiquetas Premium
+            </Typography>
           </div>
+
           <div className="w-px bg-outline" />
+
           <div className="flex flex-col items-center gap-1">
-            <Typography variant="headline-md" as="span" className="text-primary">12h</Typography>
-            <Typography variant="label-caps" className="text-outline text-center">Duración Media</Typography>
+            <Typography variant="headline-md" as="span" className="text-primary">
+              24/7
+            </Typography>
+
+            <Typography variant="label-caps" className="text-outline text-center">
+              Compra Online
+            </Typography>
           </div>
         </div>
       </div>

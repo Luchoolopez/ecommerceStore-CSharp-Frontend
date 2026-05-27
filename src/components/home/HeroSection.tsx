@@ -1,24 +1,19 @@
 import { Link } from 'react-router-dom';
 import { Typography } from '../ui';
-
-// Imágenes reales subidas al proyecto Stitch por el usuario
-const HERO_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCNcoIfqTjZdpLFUpo8QXSQVmA_omRg4MN8EuOqOTpDkir_rpx9GpHks4B22WauqwNh5rhNdRNfCDmMYBVPEMLOvreOwZ0whb2hAgnOMJa0mix-iZJBuwX_3zLGIAkFQDktsTbxrlUumFht0ZzQBUJQ_ZVXrlCu0yyWINk62d69YkV4VKk0I2xy7MjMgqx367lhVjPYINYSCMMcoZtUgCrJ_DrSZQiRUQSSANUq6I6B3LET61YIV3pkvANS4uT-PHU9nFKani7cJJIn';
+import heroBg from '../../assets/heroSection/hero-background.jpg';
 
 export const HeroSection = () => {
   return (
     <section className="relative w-full h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b border-outline">
-      {/* Imagen de fondo */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src={HERO_IMAGE}
-          alt="Floyd — Fragancias de Autor"
+          src={heroBg}
+          alt="Vice — Bebidas Alcohólicas Premium"
           className="w-full h-full object-cover object-center"
         />
-        {/* Overlay degradado para que el texto sea legible */}
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
       </div>
 
-      {/* Contenido */}
       <div className="relative z-10 w-full px-6 md:px-16 pb-16 md:pb-24 flex flex-col items-start gap-6">
         <div className="flex flex-col gap-3">
           <Typography
@@ -26,12 +21,12 @@ export const HeroSection = () => {
             as="h1"
             className="text-primary uppercase leading-none text-[64px] md:text-[120px] tracking-[-0.02em]"
           >
-            FRAGANCIAS
+            BEBIDAS
             <br />
-            DE AUTOR
+            PREMIUM
           </Typography>
           <Typography variant="body-lg" className="text-outline uppercase tracking-widest max-w-md">
-            La arquitectura del aroma.
+            Selección exclusiva de destilados y licores finos.
           </Typography>
         </div>
 

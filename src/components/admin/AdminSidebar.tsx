@@ -26,7 +26,7 @@ export const AdminSidebar = () => {
       <div className="px-6 py-5 border-b border-outline">
         <Link to="/">
           <Typography variant="headline-md" className="text-primary uppercase tracking-tighter">
-            FLOYD
+            VICE
           </Typography>
         </Link>
         <Typography variant="label-caps" className="text-outline mt-1">

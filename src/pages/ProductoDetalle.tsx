@@ -7,8 +7,8 @@ import { useCartContext } from '../context/cartContext';
 import type { ProductoResponseDto } from '../types/producto.types';
 import { productoService } from '../services/producto.service';
 import { useEffect } from 'react';
+import heroBg from '../assets/heroSection/hero-background.jpg';
 
-const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?q=80&w=800&auto=format&fit=crop';
 
 export const ProductoDetalle = () => {
   const { id } = useParams<{ id: string }>();
@@ -79,7 +79,7 @@ export const ProductoDetalle = () => {
         <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r border-outline">
           <div className="relative w-full aspect-square">
             <img
-              src={producto.imagenPrincipal || FALLBACK_IMAGE}
+              src={producto.imagenPrincipal || heroBg}
               alt={producto.nombre}
               className="w-full h-full object-cover"
             />

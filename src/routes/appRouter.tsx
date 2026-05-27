@@ -38,12 +38,10 @@ export const AppRouter = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
-      {/* Panel de administración — solo para rol "admin" */}
       <Route element={<ProtectedRoute requiredRole="admin" />}>
         <Route path="/admin/*" element={<AdminRouter />} />
       </Route>
 
-      {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

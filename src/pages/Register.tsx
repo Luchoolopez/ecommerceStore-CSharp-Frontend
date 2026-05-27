@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Eye, EyeOff, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useAuthContext } from '../context/authContext';
 import { Typography } from '../components/ui';
 
@@ -36,26 +36,26 @@ export const Register = () => {
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden border-r border-outline">
         <img
           src={SIDE_IMAGE}
-          alt="Floyd — Fragancias de autor"
+          alt="Vice — Bebidas Alcohólicas Premium"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-surface/20 to-transparent" />
         <div className="absolute bottom-12 left-10 right-10">
           <Link to="/" className="block mb-8">
             <Typography variant="headline-md" className="text-primary uppercase tracking-tighter">
-              FLOYD
+              VICE
             </Typography>
           </Link>
           <Typography
             variant="headline-lg"
             className="text-primary uppercase leading-none text-[48px]"
           >
-            ÚNITE A
+            ÚNETE A
             <br />
-            FLOYD
+            VICE
           </Typography>
           <Typography variant="body-md" className="text-outline mt-4 max-w-xs">
-            Creá tu cuenta y explorá nuestra colección.
+            Creá tu cuenta y explorá nuestra selección de destilados.
           </Typography>
         </div>
       </div>
@@ -66,12 +66,18 @@ export const Register = () => {
         <div className="lg:hidden flex items-center justify-between px-6 py-5 border-b border-outline">
           <Link to="/">
             <Typography variant="headline-md" className="text-primary uppercase tracking-tighter">
-              FLOYD
+              VICE
             </Typography>
           </Link>
         </div>
 
         <div className="flex-1 flex flex-col justify-center px-6 md:px-16 lg:px-20 py-12 max-w-lg w-full mx-auto lg:max-w-none">
+          {/* Back button */}
+          <Link to="/" className="mb-6 inline-flex items-center gap-2 text-outline hover:text-primary transition-colors w-fit">
+            <ArrowLeft size={18} />
+            <span className="font-hanken font-bold text-[11px] tracking-[0.12em] uppercase">Volver al home</span>
+          </Link>
+
           {/* Tabs */}
           <div className="flex border-b border-outline mb-10">
             <Link
