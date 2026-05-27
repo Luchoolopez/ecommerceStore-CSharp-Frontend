@@ -1,7 +1,8 @@
-import React from 'react';
 import { Navbar } from '../components/layout/Navbar';
+import { Footer } from '../components/layout/Footer';
 import { HeroSection } from '../components/home/HeroSection';
 import { FeaturedProducts } from '../components/home/FeaturedProducts';
+import { ManifestoSection } from '../components/home/ManifestoSection';
 
 export const Home = () => {
   return (
@@ -9,6 +10,8 @@ export const Home = () => {
       <Navbar />
       <HeroSection />
       <FeaturedProducts />
+      <ManifestoSection />
+      <Footer />
     </div>
   );
 };

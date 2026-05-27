@@ -14,10 +14,11 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const baseStyles = 'px-8 py-4 uppercase flex items-center justify-center transition-transform active:scale-95 disabled:opacity-50 disabled:active:scale-100 rounded-none';
+  const baseStyles = 'px-8 py-4 uppercase flex items-center justify-center transition-all duration-300 ease-out active:scale-95 disabled:opacity-50 disabled:active:scale-100 rounded-none';
   
   const variantStyles = {
-    primary: 'bg-primary text-on-primary font-anton text-[24px] hover:translate-y-[-2px] hover:shadow-[0_4px_0_0_#e5e2e1]',
+
+    primary: 'bg-primary text-on-primary font-anton text-[24px] hover:scale-[1.03] hover:bg-primary/95',
     secondary: 'bg-transparent text-on-surface border border-on-surface font-hanken text-[16px] font-bold tracking-[0.1em] hover:bg-surface-bright',
   };
 

@@ -1,32 +1,45 @@
-import { Typography, Button } from '../ui';
 import { Link } from 'react-router-dom';
+import { Typography } from '../ui';
+
+// Imágenes reales subidas al proyecto Stitch por el usuario
+const HERO_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCNcoIfqTjZdpLFUpo8QXSQVmA_omRg4MN8EuOqOTpDkir_rpx9GpHks4B22WauqwNh5rhNdRNfCDmMYBVPEMLOvreOwZ0whb2hAgnOMJa0mix-iZJBuwX_3zLGIAkFQDktsTbxrlUumFht0ZzQBUJQ_ZVXrlCu0yyWINk62d69YkV4VKk0I2xy7MjMgqx367lhVjPYINYSCMMcoZtUgCrJ_DrSZQiRUQSSANUq6I6B3LET61YIV3pkvANS4uT-PHU9nFKani7cJJIn';
 
 export const HeroSection = () => {
   return (
-    <section className="relative w-full h-[calc(100vh-80px)] border-b border-outline overflow-hidden bg-surface flex items-center">
-      {/* Background Image - Neutral/Alcohol Premium Aesthetic */}
-      <div className="absolute inset-0 opacity-40 grayscale mix-blend-luminosity">
-        <img 
-          src="'../../assets/heroSection/hero-background.jpg'" 
-          alt="Premium Bottle Display" 
+    <section className="relative w-full h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b border-outline">
+      {/* Imagen de fondo */}
+      <div className="absolute inset-0 w-full h-full">
+        <img
+          src={HERO_IMAGE}
+          alt="Floyd — Fragancias de Autor"
           className="w-full h-full object-cover object-center"
         />
+        {/* Overlay degradado para que el texto sea legible */}
+        <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full px-6 md:px-24 flex flex-col items-center md:items-start text-center md:text-left gap-6 md:gap-8 mt-12">
-        <Typography variant="headline-xl" className="text-on-surface whitespace-pre-line leading-[0.85] text-[80px] md:text-[120px]">
-          {'RESERVA\nPREMIUM'}
-        </Typography>
-        
-        <Typography variant="body-lg" className="max-w-md text-on-surface">
-          Exclusividad capturada en cristal. Descubrí nuestra selección curada de reservas de alta gama y destilados minimalistas. Sin concesiones, pura esencia.
-        </Typography>
+      {/* Contenido */}
+      <div className="relative z-10 w-full px-6 md:px-16 pb-16 md:pb-24 flex flex-col items-start gap-6">
+        <div className="flex flex-col gap-3">
+          <Typography
+            variant="headline-xl"
+            as="h1"
+            className="text-primary uppercase leading-none text-[64px] md:text-[120px] tracking-[-0.02em]"
+          >
+            FRAGANCIAS
+            <br />
+            DE AUTOR
+          </Typography>
+          <Typography variant="body-lg" className="text-outline uppercase tracking-widest max-w-md">
+            La arquitectura del aroma.
+          </Typography>
+        </div>
 
-        <Link to="/shop">
-          <Button variant="primary" className="mt-4 w-full md:w-auto">
-            EXPLORAR COLECCIÓN
-          </Button>
+        <Link
+          to="/tienda"
+          className="mt-2 inline-flex items-center gap-2 bg-primary text-on-primary font-hanken font-bold text-[12px] tracking-[0.15em] uppercase px-8 py-4 hover:bg-transparent hover:text-primary border border-primary transition-colors duration-300"
+        >
+          EXPLORAR COLECCIÓN
         </Link>
       </div>
     </section>
