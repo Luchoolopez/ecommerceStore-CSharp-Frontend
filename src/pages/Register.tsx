@@ -1,42 +1,32 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ArrowRight } from 'lucide-react';
 import { useAuthContext } from '../context/authContext';
 import { Typography } from '../components/ui';
 
-// Imagen de botella del proyecto Stitch
-const SIDE_IMAGE = 'https://lh3.googleusercontent.com/aida/ADBb0uiXEdBbJRmncyP9dzorBfUsdRymP5-jkzIMVP_yyhQ0xxgjL3_oCZv_ikKFcaxt1GDfj9M1dyqo6nICd-b98ilRDtZdeXJAaBHk7TNxOO-4Ezf9nF4oFEcWUrQ1PMgecErgtqE_R7rjVviHMyzKLsPH05iCnKHaDewQjrqJE8EFo3Zs02UrakCouxsaLuvNDiyUfU-8w1CL4JLrmKL1dLtXSIBAL9dpgp1Hr7XYz_f1D8pG3pN_w_4YTHE8';
+const SIDE_IMAGE =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuCPt6VSGuTHBOfFymn-_RjT122BPzhMRI4ByHxvxotg7NbYYxPIEjrkkHj-bq7ThfQWFelOot2lcVhjrDTDmxCDhZvWV_Z-5esAYv0O0rUo1IueWaXFYRaXYihSS4NKdrG4r04SCobLaFl9smMALzFoec-prAze_K4_OLzw5stelHQIiQippZ0DXSBRNdYRGsJLhSX8XWtZITCGQljhVYnZ-fqaCBbly0mrPsE05ldADvdVLUETYDMiqwQQZI-Qpscq4pqtbl64XGOf';
 
-type AuthMode = 'login' | 'register';
-
-export const AuthPage = () => {
+export const Register = () => {
   const navigate = useNavigate();
-  const { login, register, loading, error } = useAuthContext();
-  const [mode, setMode] = useState<AuthMode>('login');
+  const { register, loading, error } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
-
-  // Campos del formulario
+  const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [nombre, setNombre] = useState('');
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if (mode === 'login') {
-        const res = await login({ email, password });
-        // Redirigir según rol
-        if (res.usuario.rol === 'admin') {
-          navigate('/admin', { replace: true });
-        } else {
-          navigate('/', { replace: true });
-        }
-      } else {
-        await register({ nombre, email, password });
-        navigate('/', { replace: true });
-      }
+      await register({
+        nombre,
+        email,
+        password,
+      });
+      navigate('/', { replace: true });
     } catch {
-      // el error ya lo maneja el hook
+      // El error ya lo maneja el hook y se muestra en pantalla
     }
   };
 
@@ -49,25 +39,28 @@ export const AuthPage = () => {
           alt="Floyd — Fragancias de autor"
           className="w-full h-full object-cover object-center"
         />
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-surface/20 to-transparent" />
-        {/* Texto sobre imagen */}
         <div className="absolute bottom-12 left-10 right-10">
           <Link to="/" className="block mb-8">
             <Typography variant="headline-md" className="text-primary uppercase tracking-tighter">
               FLOYD
             </Typography>
           </Link>
-          <Typography variant="headline-lg" className="text-primary uppercase leading-none text-[48px]">
-            FRAGANCIAS<br />DE AUTOR
+          <Typography
+            variant="headline-lg"
+            className="text-primary uppercase leading-none text-[48px]"
+          >
+            ÚNITE A
+            <br />
+            FLOYD
           </Typography>
           <Typography variant="body-md" className="text-outline mt-4 max-w-xs">
-            La arquitectura del aroma.
+            Creá tu cuenta y explorá nuestra colección.
           </Typography>
         </div>
       </div>
 
-      {/* Panel de formulario */}
+      {/* Formulario */}
       <div className="flex-1 flex flex-col">
         {/* Header móvil */}
         <div className="lg:hidden flex items-center justify-between px-6 py-5 border-b border-outline">
@@ -79,62 +72,46 @@ export const AuthPage = () => {
         </div>
 
         <div className="flex-1 flex flex-col justify-center px-6 md:px-16 lg:px-20 py-12 max-w-lg w-full mx-auto lg:max-w-none">
-          {/* Tabs Login / Registro */}
+          {/* Tabs */}
           <div className="flex border-b border-outline mb-10">
-            <button
-              type="button"
-              onClick={() => setMode('login')}
-              className={`pb-4 mr-8 font-hanken font-bold text-[12px] tracking-[0.15em] uppercase transition-colors relative ${
-                mode === 'login' ? 'text-primary' : 'text-outline hover:text-on-surface'
-              }`}
+            <Link
+              to="/login"
+              className="pb-4 mr-8 font-hanken font-bold text-[12px] tracking-[0.15em] uppercase text-outline hover:text-on-surface transition-colors"
             >
               Iniciar Sesión
-              {mode === 'login' && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary" />
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode('register')}
-              className={`pb-4 font-hanken font-bold text-[12px] tracking-[0.15em] uppercase transition-colors relative ${
-                mode === 'register' ? 'text-primary' : 'text-outline hover:text-on-surface'
-              }`}
-            >
+            </Link>
+            <span className="pb-4 font-hanken font-bold text-[12px] tracking-[0.15em] uppercase text-primary relative">
               Crear Cuenta
-              {mode === 'register' && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary" />
-              )}
-            </button>
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary" />
+            </span>
           </div>
 
-          {/* Título */}
-          <Typography variant="headline-lg" as="h1" className="text-primary uppercase leading-none text-[40px] md:text-[56px] mb-2">
-            {mode === 'login' ? 'Bienvenido' : 'Crear Cuenta'}
+          <Typography
+            variant="headline-lg"
+            as="h1"
+            className="text-primary uppercase leading-none text-[40px] md:text-[56px] mb-2"
+          >
+            Crear Cuenta
           </Typography>
           <Typography variant="body-md" className="text-outline mb-10">
-            {mode === 'login'
-              ? 'Ingresá a tu cuenta para continuar.'
-              : 'Completá tus datos para registrarte.'}
+            Completá tus datos para registrarte.
           </Typography>
 
-          {/* Formulario */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            {/* Campos solo en registro */}
-            {mode === 'register' && (
-              <div className="flex flex-col gap-1">
-                <label className="font-hanken font-bold text-[11px] tracking-[0.12em] uppercase text-outline">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={nombre}
-                  onChange={e => setNombre(e.target.value)}
-                  placeholder="Juan"
-                  className="bg-transparent border border-outline focus:border-primary text-on-surface font-hanken text-[16px] px-4 py-3 outline-none transition-colors placeholder:text-outline/50"
-                />
-              </div>
-            )}
+            {/* Nombre */}
+            <div className="flex flex-col gap-1">
+              <label className="font-hanken font-bold text-[11px] tracking-[0.12em] uppercase text-outline">
+                Nombre
+              </label>
+              <input
+                type="text"
+                required
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                placeholder="Juan"
+                className="bg-transparent border border-outline focus:border-primary text-on-surface font-hanken text-[16px] px-4 py-3 outline-none transition-colors placeholder:text-outline/50"
+              />
+            </div>
 
             {/* Email */}
             <div className="flex flex-col gap-1">
@@ -145,7 +122,7 @@ export const AuthPage = () => {
                 type="email"
                 required
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="juan@ejemplo.com"
                 className="bg-transparent border border-outline focus:border-primary text-on-surface font-hanken text-[16px] px-4 py-3 outline-none transition-colors placeholder:text-outline/50"
               />
@@ -160,22 +137,24 @@ export const AuthPage = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   required
+                  minLength={6}
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="w-full bg-transparent border border-outline focus:border-primary text-on-surface font-hanken text-[16px] px-4 py-3 pr-12 outline-none transition-colors placeholder:text-outline/50"
                 />
                 <button
                   type="button"
-                  onClick={() => setShowPassword(s => !s)}
+                  onClick={() => setShowPassword((s) => !s)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors"
+                  aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
             </div>
 
-            {/* Error */}
+            {/* Error del backend */}
             {error && (
               <div className="border border-error px-4 py-3">
                 <Typography variant="body-md" className="text-error">
@@ -190,27 +169,21 @@ export const AuthPage = () => {
               disabled={loading}
               className="mt-2 w-full bg-primary text-on-primary font-hanken font-bold text-[13px] tracking-[0.15em] uppercase py-4 flex items-center justify-center gap-3 hover:bg-primary/90 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Procesando...' : mode === 'login' ? 'Ingresar' : 'Crear Cuenta'}
+              {loading ? 'Creando cuenta...' : 'Crear Cuenta'}
               {!loading && <ArrowRight size={18} />}
             </button>
 
-            {/* Switch mode */}
+            {/* Link a login */}
             <div className="text-center border-t border-outline pt-6">
-              {mode === 'login' ? (
-                <Typography variant="body-md" className="text-outline">
-                  ¿No tenés cuenta?{' '}
-                  <button type="button" onClick={() => setMode('register')} className="text-primary underline underline-offset-4 hover:text-on-surface transition-colors">
-                    Registrate
-                  </button>
-                </Typography>
-              ) : (
-                <Typography variant="body-md" className="text-outline">
-                  ¿Ya tenés cuenta?{' '}
-                  <button type="button" onClick={() => setMode('login')} className="text-primary underline underline-offset-4 hover:text-on-surface transition-colors">
-                    Iniciá sesión
-                  </button>
-                </Typography>
-              )}
+              <Typography variant="body-md" className="text-outline">
+                ¿Ya tenés cuenta?{' '}
+                <Link
+                  to="/login"
+                  className="text-primary underline underline-offset-4 hover:text-on-surface transition-colors"
+                >
+                  Iniciá sesión
+                </Link>
+              </Typography>
             </div>
           </form>
         </div>

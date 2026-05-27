@@ -1,14 +1,12 @@
 export interface LoginDto {
   email: string;
-  passwordHash: string;
+  password: string;
 }
 
 export interface RegisterDto {
   nombre: string;
-  apellido: string;
   email: string;
-  passwordHash: string;
-  telefono?: string;
+  password: string;
 }
 
 export interface AuthResponseDto {

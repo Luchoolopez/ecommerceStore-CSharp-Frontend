@@ -14,7 +14,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (user) {
       cart.fetchCarrito();
     }
-  }, [user, cart.fetchCarrito]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.id]); // solo disparar cuando cambia el ID del usuario, no la referencia del hook
 
   return <CartContext.Provider value={cart}>{children}</CartContext.Provider>;
 };

@@ -54,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ producto, className = 
         </Typography>
         <div className="flex items-center gap-3 mt-1">
           <Typography variant="label-caps" as="span" className="text-primary">
-            ${precioFinal.toFixed(2)}
+            ${(precioFinal ?? precioBase).toFixed(2)}
           </Typography>
           {tieneDescuento && (
             <Typography variant="label-caps" as="span" className="text-outline line-through">

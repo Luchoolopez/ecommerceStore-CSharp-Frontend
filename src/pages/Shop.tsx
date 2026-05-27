@@ -3,6 +3,7 @@ import { Navbar } from '../components/layout/Navbar';
 import { ShopGrid } from '../components/shop/ShopGrid';
 import { Typography } from '../components/ui';
 import { categoriaService } from '../services/categoria.service';
+import { Footer } from '../components/layout/Footer';
 import type { CategoriaDto } from '../types/categoria.types';
 
 export const Shop = () => {
@@ -30,6 +31,8 @@ export const Shop = () => {
 
       {/* Grilla con filtros */}
       <ShopGrid categorias={categorias} />
+
+      <Footer />
     </div>
   );
 };

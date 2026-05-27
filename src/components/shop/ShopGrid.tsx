@@ -15,31 +15,23 @@ export const ShopGrid: React.FC<ShopGridProps> = ({ categorias }) => {
   const navigate = useNavigate();
   const [filtros, setFiltros] = useState<ProductoFilterDto>({ pageNumber: 1, pageSize: 12 });
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const { productos, loading, error, fetchProductos } = useProductos(filtros);
+  const { productos, loading, error } = useProductos(filtros);
 
   const handleCategoriaClick = useCallback((categoriaId?: number) => {
-    const nuevosFiltros = { ...filtros, categoriaId, pageNumber: 1 };
-    setFiltros(nuevosFiltros);
-    fetchProductos(nuevosFiltros);
-  }, [filtros, fetchProductos]);
+    setFiltros(prev => ({ ...prev, categoriaId, pageNumber: 1 }));
+  }, []);
 
   const handleNuevo = useCallback((val?: boolean) => {
-    const nuevosFiltros = { ...filtros, esNuevo: val, pageNumber: 1 };
-    setFiltros(nuevosFiltros);
-    fetchProductos(nuevosFiltros);
-  }, [filtros, fetchProductos]);
+    setFiltros(prev => ({ ...prev, esNuevo: val, pageNumber: 1 }));
+  }, []);
 
   const handleDestacado = useCallback((val?: boolean) => {
-    const nuevosFiltros = { ...filtros, esDestacado: val, pageNumber: 1 };
-    setFiltros(nuevosFiltros);
-    fetchProductos(nuevosFiltros);
-  }, [filtros, fetchProductos]);
+    setFiltros(prev => ({ ...prev, esDestacado: val, pageNumber: 1 }));
+  }, []);
 
-  const handlePagina = (pagina: number) => {
-    const nuevosFiltros = { ...filtros, pageNumber: pagina };
-    setFiltros(nuevosFiltros);
-    fetchProductos(nuevosFiltros);
-  };
+  const handlePagina = useCallback((pagina: number) => {
+    setFiltros(prev => ({ ...prev, pageNumber: pagina }));
+  }, []);
 
   const totalPaginas = productos?.totalPages ?? 1;
   const paginaActual = filtros.pageNumber ?? 1;
@@ -92,9 +84,7 @@ export const ShopGrid: React.FC<ShopGridProps> = ({ categorias }) => {
             <button
               className="flex items-center gap-1 text-error hover:text-on-surface transition-colors"
               onClick={() => {
-                const reset = { pageNumber: 1, pageSize: 12 };
-                setFiltros(reset);
-                fetchProductos(reset);
+                setFiltros({ pageNumber: 1, pageSize: 12 });
               }}
             >
               <X size={14} />

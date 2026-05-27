@@ -4,7 +4,6 @@ import { Navbar } from '../components/layout/Navbar';
 import { Typography, Button, Chip } from '../components/ui';
 import { useToast } from '../components/ui/toast';
 import { useCartContext } from '../context/cartContext';
-import { useProductos } from '../hooks/useProductos';
 import type { ProductoResponseDto } from '../types/producto.types';
 import { productoService } from '../services/producto.service';
 import { useEffect } from 'react';
@@ -118,7 +117,7 @@ export const ProductoDetalle = () => {
           {/* Precio */}
           <div className="flex items-baseline gap-4 border-y border-outline py-4">
             <Typography variant="headline-md" as="span" className="text-primary">
-              ${producto.precioFinal.toFixed(2)}
+              ${(producto.precioFinal ?? producto.precioBase).toFixed(2)}
             </Typography>
             {tieneDescuento && (
               <Typography variant="body-lg" as="span" className="text-outline line-through">

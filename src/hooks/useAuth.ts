@@ -21,7 +21,7 @@ export const useAuth = () => {
       setUser(res.usuario);
       return res;
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Error al iniciar sesión');
+      setError(err.response?.data?.mensaje || 'Error al iniciar sesión');
       throw err;
     } finally {
       setLoading(false);
@@ -39,7 +39,7 @@ export const useAuth = () => {
       setUser(res.usuario);
       return res;
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Error al registrarse');
+      setError(err.response?.data?.mensaje || 'Error al registrarse');
       throw err;
     } finally {
       setLoading(false);
