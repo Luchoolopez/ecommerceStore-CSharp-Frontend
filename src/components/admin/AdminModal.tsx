@@ -6,21 +6,9 @@ interface AdminModalProps {
   open: boolean;
   onClose: () => void;
   title: string;
-  /** Ancho máximo del modal. Por defecto: max-w-xl */
   maxWidth?: 'max-w-sm' | 'max-w-md' | 'max-w-xl' | 'max-w-2xl';
   children: ReactNode;
 }
-
-/**
- * Modal accesible para el panel de administración.
- *
- * Cumple:
- * - aria-modal="true" y role="dialog" para lectores de pantalla
- * - Focus trap: el primer elemento enfocable recibe foco al abrir
- * - Cierre con tecla Escape
- * - Cierre al hacer click en el backdrop
- * - Scroll bloqueado en body mientras está abierto
- */
 export const AdminModal = ({ open, onClose, title, maxWidth = 'max-w-xl', children }: AdminModalProps) => {
   const panelRef = useRef<HTMLDivElement>(null);
   const onCloseRef = useRef(onClose);
@@ -45,7 +33,7 @@ export const AdminModal = ({ open, onClose, title, maxWidth = 'max-w-xl', childr
     const preferred = list.find((el) => ['INPUT', 'SELECT', 'TEXTAREA'].includes(el.tagName));
     (preferred ?? list[0])?.focus();
 
-    // Cerrar con Escape (usa ref para la versión más reciente de onClose sin re-suscribir efecto)
+    // Cerrar con Escape 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onCloseRef.current();
     };
@@ -66,19 +54,16 @@ export const AdminModal = ({ open, onClose, title, maxWidth = 'max-w-xl', childr
       aria-modal="true"
       aria-labelledby="admin-modal-title"
     >
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-surface/80 backdrop-blur-sm"
         aria-hidden="true"
         onClick={onClose}
       />
 
-      {/* Panel */}
       <div
         ref={panelRef}
         className={`relative z-10 bg-surface border border-outline w-full ${maxWidth} max-h-[90vh] overflow-y-auto flex flex-col`}
       >
-        {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-outline shrink-0">
           <Typography
             id="admin-modal-title"
@@ -96,7 +81,6 @@ export const AdminModal = ({ open, onClose, title, maxWidth = 'max-w-xl', childr
           </button>
         </div>
 
-        {/* Contenido */}
         <div className="p-6 flex flex-col gap-4">{children}</div>
       </div>
     </div>

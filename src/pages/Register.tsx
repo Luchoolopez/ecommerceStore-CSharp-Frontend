@@ -4,8 +4,6 @@ import { Eye, EyeOff, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useAuthContext } from '../context/authContext';
 import { Typography } from '../components/ui';
 
-const SIDE_IMAGE =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCPt6VSGuTHBOfFymn-_RjT122BPzhMRI4ByHxvxotg7NbYYxPIEjrkkHj-bq7ThfQWFelOot2lcVhjrDTDmxCDhZvWV_Z-5esAYv0O0rUo1IueWaXFYRaXYihSS4NKdrG4r04SCobLaFl9smMALzFoec-prAze_K4_OLzw5stelHQIiQippZ0DXSBRNdYRGsJLhSX8XWtZITCGQljhVYnZ-fqaCBbly0mrPsE05ldADvdVLUETYDMiqwQQZI-Qpscq4pqtbl64XGOf';
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -35,7 +33,6 @@ export const Register = () => {
       {/* Panel lateral con imagen — solo desktop */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden border-r border-outline">
         <img
-          src={SIDE_IMAGE}
           alt="Vice — Bebidas Alcohólicas Premium"
           className="w-full h-full object-cover object-center"
         />
