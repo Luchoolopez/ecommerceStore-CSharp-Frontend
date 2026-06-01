@@ -1,15 +1,15 @@
 import api from './api';
-import type { UsuarioDto, UpdateUsuarioDto } from '../types/usuario.types';
+import type { UsuarioResponseDto, UpdateUsuarioDto } from '../types/usuario.types';
 import type { ApiResponse } from '../types/common.types';
 
 export const usuarioService = {
-  getProfile: async (userId: number): Promise<UsuarioDto> => {
-    const response = await api.get<ApiResponse<UsuarioDto>>(`/usuarios/${userId}`);
+  getProfile: async (userId: number): Promise<UsuarioResponseDto> => {
+    const response = await api.get<ApiResponse<UsuarioResponseDto>>(`/usuarios/${userId}`);
     return response.data.data;
   },
 
-  updateProfile: async (userId: number, data: UpdateUsuarioDto): Promise<UsuarioDto> => {
-    const response = await api.put<ApiResponse<UsuarioDto>>(`/usuarios/${userId}`, data);
+  updateProfile: async (userId: number, data: UpdateUsuarioDto): Promise<UsuarioResponseDto> => {
+    const response = await api.put<ApiResponse<UsuarioResponseDto>>(`/usuarios/${userId}`, data);
     return response.data.data;
   }
 };

@@ -1,16 +1,18 @@
-export interface UsuarioDto {
+export type RolUsuario = 'usuario' | 'admin';
+
+export interface UsuarioResponseDto {
   id: number;
   nombre: string;
-  apellido: string;
   email: string;
+  rol: RolUsuario;
   telefono?: string;
-  rol: string;
   activo: boolean;
-  fechaRegistro: string;
+  fechaCreacion: string;
 }
 
+// Para actualizar desde admin
 export interface UpdateUsuarioDto {
   nombre?: string;
-  apellido?: string;
   telefono?: string;
+  activo?: boolean;
 }

@@ -4,8 +4,6 @@ export interface ApiResponse<T> {
   mensaje: string;
   data: T;
 }
-
-// Coincide con DTOs/PagedResponse.cs del backend
 export interface PagedResponse<T> {
   items: T[];
   totalItems: number;

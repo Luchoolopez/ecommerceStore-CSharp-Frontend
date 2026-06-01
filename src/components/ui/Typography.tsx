@@ -2,10 +2,9 @@ import React from 'react';
 
 type Variant = 'headline-xl' | 'headline-lg' | 'headline-md' | 'body-lg' | 'body-md' | 'label-caps';
 
-interface TypographyProps {
+interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   variant: Variant;
   children: React.ReactNode;
-  className?: string;
   as?: React.ElementType;
 }
 
@@ -27,10 +26,11 @@ const defaultTags: Record<Variant, React.ElementType> = {
   'label-caps': 'span',
 };
 
-export const Typography: React.FC<TypographyProps> = ({ variant, children, className = '', as }) => {
+export const Typography: React.FC<TypographyProps> = ({ variant, children, className = '', as, ...rest }) => {
   const Component = as || defaultTags[variant];
   return (
-    <Component className={`${variantStyles[variant]} ${className}`}>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <Component className={`${variantStyles[variant]} ${className}`} {...rest}>
       {children}
     </Component>
   );
