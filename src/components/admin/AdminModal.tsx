@@ -23,6 +23,11 @@ interface AdminModalProps {
  */
 export const AdminModal = ({ open, onClose, title, maxWidth = 'max-w-xl', children }: AdminModalProps) => {
   const panelRef = useRef<HTMLDivElement>(null);
+  const onCloseRef = useRef(onClose);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   // Focus trap + scroll lock
   useEffect(() => {
@@ -32,15 +37,17 @@ export const AdminModal = ({ open, onClose, title, maxWidth = 'max-w-xl', childr
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    // Enfocar el primer elemento interactivo del panel
+    // Enfocar el primer elemento preferido (input/select/textarea), si no existe, el primero disponible
     const focusable = panelRef.current?.querySelectorAll<HTMLElement>(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
-    focusable?.[0]?.focus();
+    const list = Array.from(focusable ?? []);
+    const preferred = list.find((el) => ['INPUT', 'SELECT', 'TEXTAREA'].includes(el.tagName));
+    (preferred ?? list[0])?.focus();
 
-    // Cerrar con Escape
+    // Cerrar con Escape (usa ref para la versión más reciente de onClose sin re-suscribir efecto)
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') onCloseRef.current();
     };
     document.addEventListener('keydown', handleKeyDown);
 
@@ -48,7 +55,7 @@ export const AdminModal = ({ open, onClose, title, maxWidth = 'max-w-xl', childr
       document.body.style.overflow = prev;
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 

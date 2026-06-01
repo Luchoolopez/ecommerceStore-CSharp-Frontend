@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { to: '/admin/categorias', label: 'Categorías', icon: Tag },
   { to: '/admin/pedidos', label: 'Pedidos', icon: ShoppingBag },
   { to: '/admin/usuarios', label: 'Usuarios', icon: Users },
+  { to: '/', label: 'Cerrar Sesión', icon: LogOut, onClick: () => {} },
 ];
 
 export const AdminSidebar = () => {
@@ -34,7 +35,6 @@ export const AdminSidebar = () => {
         </Typography>
       </div>
 
-      {/* Nav */}
       <nav className="flex-1 py-4 flex flex-col gap-1 px-2">
         {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
           <NavLink
